@@ -8,8 +8,24 @@ function Username() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Validation checks
     if (!username || !password) {
       setError("Username and Password are required.");
+      return;
+    }
+
+    if (username.length < 4) {
+      setError("Username must be at least 4 characters long.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return;
+    }
+
+    if (!/\d/.test(password)) {
+      setError("Password must contain at least one number.");
       return;
     }
 
