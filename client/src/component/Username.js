@@ -10,7 +10,7 @@ function Username() {
       username: "",
       avatar: null,
     },
-    validate:usenamevalidate,
+    validate: usenamevalidate,
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: (values) => {
@@ -70,36 +70,44 @@ function Username() {
             </p>
           </div>
 
-          {/* Avatar Upload */}
-          <div className="text-center mb-4">
-            <div className="position-relative d-flex justify-content-center">
-              <div
-                className="border border-secondary rounded-circle"
-                style={{ width: "100px", height: "100px", overflow: "hidden", cursor: "pointer" }}
-              >
-                <input
-                  type="file"
-                  className="position-absolute w-100 h-100 opacity-0"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-                <div className="d-flex justify-content-center align-items-center w-100 h-100">
-                  {formik.values.avatar ? (
-                    <img
-                      src={formik.values.avatar}
-                      alt="Avatar"
-                      style={{ width: "100%", height: "100%", borderRadius: "50%" }}
-                    />
-                  ) : (
-                    <i className="fas fa-user-circle fa-6x text-primary"></i>
-                  )}
+          <form onSubmit={formik.handleSubmit}>
+            {/* Avatar Upload (Now inside form) */}
+            <div className="text-center mb-4">
+              <div className="position-relative d-flex justify-content-center">
+                <div
+                  className="border border-secondary rounded-circle"
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                    overflow: "hidden",
+                    cursor: "pointer",
+                  }}
+                >
+                  <input
+                    type="file"
+                    className="position-absolute w-100 h-100 opacity-0"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                  />
+                  <div className="d-flex justify-content-center align-items-center w-100 h-100">
+                    {formik.values.avatar ? (
+                      <img
+                        src={formik.values.avatar}
+                        alt="Avatar"
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: "50%",
+                        }}
+                      />
+                    ) : (
+                      <i className="fas fa-user-circle fa-6x text-primary"></i>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Formik Form */}
-          <form onSubmit={formik.handleSubmit}>
             {/* Username Field */}
             <div className="mb-3 position-relative">
               <div className="input-group">
@@ -129,20 +137,27 @@ function Username() {
                 boxShadow: "0 4px 8px rgba(0, 123, 255, 0.3)",
                 transition: "all 0.3s ease",
               }}
-              onMouseEnter={(e) => (e.target.style.background = "linear-gradient(90deg, #0056b3 0%, #007bff 100%)")}
-              onMouseLeave={(e) => (e.target.style.background = "linear-gradient(90deg, #007bff 0%, #0056b3 100%)")}
+              onMouseEnter={(e) =>
+                (e.target.style.background =
+                  "linear-gradient(90deg, #0056b3 0%, #007bff 100%)")
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.background =
+                  "linear-gradient(90deg, #007bff 0%, #0056b3 100%)")
+              }
             >
               Continue
+
             </button>
 
             <div className="text-center mt-3">
-              <span style={{ fontSize: "0.95rem", color: "#6c757d" }}>
-                Not a member?{" "}
-                <a href="/register" className="text-primary" style={{ fontWeight: "600", textDecoration: "none" }}>
-                  Register here
-                </a>
-              </span>
-            </div>
+          <span style={{ fontSize: "0.95rem", color: "#6c757d" }}>
+            Not a member?{" "}
+            <a href="/register" className="text-primary" style={{ fontWeight: "600", textDecoration: "none" }}>
+              Register here
+            </a>
+          </span>
+        </div>
           </form>
         </div>
       </div>
