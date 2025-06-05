@@ -1,7 +1,7 @@
 import React from "react";
 import { useFormik } from "formik";
-import { passwordvalidate } from "../helper/validate";
-import toast,{ Toaster } from "react-hot-toast";
+import { resetpassvalidate } from "../helper/validate";
+import toast, { Toaster } from "react-hot-toast";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function Reset() {
@@ -9,17 +9,15 @@ function Reset() {
     initialValues: {
       password: "",
       confirmPassword: "",
-     
     },
-    validate:passwordvalidate,
+    validate: resetpassvalidate,
     validateOnBlur: false,
     validateOnChange: false,
-   onSubmit: (values) => {
+    onSubmit: (values) => {
       if (!values.password) {
         toast.error("password is required!");
       } else {
-        console.log(values.password,values.confirmPassword);
-        
+        console.log(values.password, values.confirmPassword);
       }
     },
   });
@@ -64,15 +62,13 @@ function Reset() {
             </p>
           </div>
 
-          
-
           {/* Formik Form */}
           <form onSubmit={formik.handleSubmit}>
             {/* password Field */}
             <div className="mb-3 position-relative">
               <div className="input-group">
                 <span className="input-group-text">
-                  <i className="fas fa-lock"></i> 
+                  <i className="fas fa-lock"></i>
                 </span>
                 <input
                   type="text"
@@ -82,10 +78,10 @@ function Reset() {
                 />
               </div>
             </div>
-             <div className="mb-3 position-relative">
+            <div className="mb-3 position-relative">
               <div className="input-group">
                 <span className="input-group-text">
-                  <i className="fas fa-lock"></i> 
+                  <i className="fas fa-lock"></i>
                 </span>
                 <input
                   type="text"
@@ -110,20 +106,17 @@ function Reset() {
                 boxShadow: "0 4px 8px rgba(0, 123, 255, 0.3)",
                 transition: "all 0.3s ease",
               }}
-              onMouseEnter={(e) => (e.target.style.background = "linear-gradient(90deg, #0056b3 0%, #007bff 100%)")}
-              onMouseLeave={(e) => (e.target.style.background = "linear-gradient(90deg, #007bff 0%, #0056b3 100%)")}
+              onMouseEnter={(e) =>
+                (e.target.style.background =
+                  "linear-gradient(90deg, #0056b3 0%, #007bff 100%)")
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.background =
+                  "linear-gradient(90deg, #007bff 0%, #0056b3 100%)")
+              }
             >
-              Continue
+              Reset Password
             </button>
-
-            <div className="text-center mt-3">
-              <span style={{ fontSize: "0.95rem", color: "#6c757d" }}>
-                Forget Password..{" "}
-                <a href="/recovery" className="text-primary" style={{ fontWeight: "600", textDecoration: "none" }}>
-                  Recover Now
-                </a>
-              </span>
-            </div>
           </form>
         </div>
       </div>
